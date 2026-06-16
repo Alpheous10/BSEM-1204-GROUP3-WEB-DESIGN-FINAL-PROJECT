@@ -1,0 +1,8 @@
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node/npm (if any)
+node_modules/
+package-lock.json
