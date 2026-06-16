@@ -226,41 +226,30 @@
   <script>
 
 function showLogin() {
-
     document.getElementById("loginForm").style.display = "block";
     document.getElementById("registerForm").style.display = "none";
-
     document.getElementById("tabLogin").classList.add("active");
     document.getElementById("tabRegister").classList.remove("active");
-
 }
 
 function showRegister() {
-
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("registerForm").style.display = "block";
-
     document.getElementById("tabLogin").classList.remove("active");
     document.getElementById("tabRegister").classList.add("active");
-
 }
 
-
-// CREATE ACCOUNT
+// REGISTER ACCOUNT
 function registerUser() {
+    const fullName = document.getElementById("fullName").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const district = document.querySelector(".district-select").value;
+    const password = document.getElementById("registerPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-    let fullName = document.getElementById("fullName").value;
-    let phone = document.getElementById("phone").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("registerPassword").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-
-    if (
-        fullName === "" ||
-        phone === "" ||
-        password === ""
-    ) {
-        alert("Please fill all required fields.");
+    if (!fullName || !phone || !district || !password || !confirmPassword) {
+        alert("Please fill in all required fields.");
         return;
     }
 
@@ -269,19 +258,63 @@ function registerUser() {
         return;
     }
 
-    let user = {
-        fullName: fullName,
-        phone: phone,
-        email: email,
-        password: password
+    const user = {
+        fullName,
+        phone,
+        email,
+        district,
+        password
     };
 
-    localStorage.setItem("user", JSON.stringify(user));
+    // Store in localStorage (for demo purposes)
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    
+    // Check if user already exists
+    if (users.find(u => u.phone === phone)) {
+        alert("An account with this phone number already exists.");
+        return;
+    }
 
-    alert("Account created successfully!");
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
 
+    alert("Account created successfully! You can now login.");
     showLogin();
 }
+
+// LOGIN USER
+function loginUser() {
+    const loginInput = document.getElementById("loginEmail").value;
+    const loginPass = document.getElementById("loginPassword").value;
+
+    if (!loginInput || !loginPass) {
+        alert("Please enter your credentials.");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => (u.phone === loginInput || u.email === loginInput) && u.password === loginPass);
+
+    if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        alert("Login successful!");
+        window.location.href = "patient-portal.html";
+    } else {
+        alert("Invalid credentials. Please try again.");
+    }
+}
+
+// Hamburger Toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+});
+
+  </script>
+</body>
+</html>
+
 
 
 // LOGIN

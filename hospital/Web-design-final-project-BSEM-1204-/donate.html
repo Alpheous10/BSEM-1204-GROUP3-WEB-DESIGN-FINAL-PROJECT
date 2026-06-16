@@ -199,7 +199,7 @@
         <div class="form-grid">
           <div class="form-field">
             <label>First Name</label>
-           <input type="text" id="firstName" placeholder="e.g. Aminata"/>
+            <input type="text" id="firstName" placeholder="e.g. Aminata"/>
           </div>
           <div class="form-field">
             <label>Last Name</label>
@@ -248,10 +248,11 @@
           </div>
           <div class="form-field full">
             <label>Additional Notes</label>
-            <textarea id="notes"placeholder="Any additional information about your donation..."></textarea>
+            <textarea id="notes" placeholder="Anything else we should know?"></textarea>
           </div>
         </div>
-       <button class="btn-primary"style="width:100%; padding:14px; font-size:15px;"onclick="submitDonation()">Submit Donation Registration</button>
+
+        <button class="btn-primary" style="width:100%; margin-top:16px;" onclick="registerDonor()">Complete Registration</button>
       </div>
     </div>
   </section>
@@ -285,100 +286,102 @@
     .stock-label.mid  { color:#F39C12; min-width:60px; }
     .stock-label.ok   { color:#1A8C6A; min-width:60px; }
   </style>
+
   <script>
-
-  // Switch donation tabs
-  function switchTab(btn, tabId) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    ['blood', 'medicines', 'equipment', 'financial'].forEach(id => {
-      document.getElementById('tab-' + id).style.display =
-        (id === tabId) ? 'grid' : 'none';
-    });
-  }
-
-  // Scroll to donor form
-  function scrollToForm() {
-    document.getElementById('donorForm').scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
-
-  // Blood type buttons
-  document.querySelectorAll('.blood-type-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.blood-type-btn')
-        .forEach(b => b.classList.remove('active'));
-
+    function switchTab(btn, tabId) {
+      // Update Buttons
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-    });
-  });
 
-  // Hamburger menu (safe)
-  const hamburger = document.getElementById("hamburger");
-
-  if (hamburger) {
-    hamburger.addEventListener("click", function () {
-      document.getElementById("mobileMenu").classList.toggle("open");
-    });
-  }
-
-  // Submit donor registration
-  function submitDonation() {
-
-    let firstName = document.getElementById("firstName").value.trim();
-    let lastName = document.getElementById("lastName").value.trim();
-    let phoneNumber = document.getElementById("phoneNumber").value.trim();
-    let district = document.getElementById("district").value;
-    let donationType = document.getElementById("donationType").value;
-    let bloodType = document.getElementById("bloodType").value;
-    let notes = document.getElementById("notes").value.trim();
-
-    if (
-      firstName === "" ||
-      lastName === "" ||
-      phoneNumber === "" ||
-      district === ""
-    ) {
-      alert("Please fill in all required fields.");
-      return;
+      // Update Grids
+      ['blood', 'medicines', 'equipment', 'financial'].forEach(id => {
+        const el = document.getElementById('tab-' + id);
+        if (el) el.style.display = (id === tabId) ? 'grid' : 'none';
+      });
     }
 
-    let donor = {
-      firstName,
-      lastName,
-      phoneNumber,
-      district,
-      donationType,
-      bloodType,
-      notes
-    };
+    function scrollToForm() {
+      document.getElementById('donorForm').scrollIntoView({ behavior: 'smooth' });
+    }
 
-    // Save to localStorage
-    let donors = JSON.parse(localStorage.getItem("donors")) || [];
-    donors.push(donor);
-    localStorage.setItem("donors", JSON.stringify(donors));
+    function registerDonor() {
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const phone = document.getElementById('phoneNumber').value.trim();
+      const district = document.getElementById('district').value;
+      const donationType = document.getElementById('donationType').value;
 
-    alert(
-      "✅ Donation registration successful!\n\n" +
-      "Name: " + firstName + " " + lastName +
-      "\nPhone: " + phoneNumber +
-      "\nDistrict: " + district +
-      "\nDonation Type: " + donationType
-    );
+      if (!firstName || !lastName || !phone || !district) {
+        alert("Please fill in all required fields.");
+        return;
+      }
 
-    // Clear form
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
-    document.getElementById("phoneNumber").value = "";
-    document.getElementById("district").selectedIndex = 0;
-    document.getElementById("donationType").selectedIndex = 0;
-    document.getElementById("bloodType").selectedIndex = 0;
-    document.getElementById("notes").value = "";
-  }
+      const donor = {
+        firstName,
+        lastName,
+        phone,
+        district,
+        donationType,
+        bloodType: document.getElementById('bloodType').value,
+        date: new Date().toLocaleDateString()
+      };
 
-</script>
+      let donors = JSON.parse(localStorage.getItem("donors")) || [];
+      donors.push(donor);
+      localStorage.setItem("donors", JSON.stringify(donors));
+
+      alert(`Thank you ${firstName}! Your registration for ${donationType} donation has been received. We will contact you soon.`);
+      
+      // Clear form
+      document.getElementById('firstName').value = '';
+      document.getElementById('lastName').value = '';
+      document.getElementById('phoneNumber').value = '';
+      document.getElementById('district').selectedIndex = 0;
+      document.getElementById('donationType').selectedIndex = 0;
+      document.getElementById('bloodType').selectedIndex = 0;
+      document.getElementById('notes').value = '';
+    }
+
+    // Simulate "Live" Blood Stock
+    function updateBloodStock() {
+      const fills = document.querySelectorAll('.stock-fill');
+      fills.forEach(fill => {
+        let currentWidth = parseInt(fill.style.width);
+        let change = Math.floor(Math.random() * 11) - 5;
+        let newWidth = Math.min(Math.max(currentWidth + change, 5), 95);
+        fill.style.width = newWidth + '%';
+
+        const label = fill.parentElement.nextElementSibling;
+        if (newWidth < 25) {
+          label.innerText = 'Critical';
+          label.className = 'stock-label low';
+          fill.className = 'stock-fill low';
+        } else if (newWidth < 50) {
+          label.innerText = 'Low';
+          label.className = 'stock-label low';
+          fill.className = 'stock-fill low';
+        } else if (newWidth < 75) {
+          label.innerText = 'Moderate';
+          label.className = 'stock-label mid';
+          fill.className = 'stock-fill mid';
+        } else {
+          label.innerText = 'Adequate';
+          label.className = 'stock-label ok';
+          fill.className = 'stock-fill ok';
+        }
+      });
+    }
+
+    setInterval(updateBloodStock, 5000);
+
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const menu = document.getElementById('mobileMenu');
+        if (menu) menu.classList.toggle('open');
+      });
+    }
+  </script>
 
 </body>
 </html>

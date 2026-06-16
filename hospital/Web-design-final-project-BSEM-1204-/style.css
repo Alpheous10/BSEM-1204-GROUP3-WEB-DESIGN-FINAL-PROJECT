@@ -3958,3 +3958,30 @@ img { max-width: 100%; display: block; }
   border-radius: 12px;
   margin-bottom: 10px;
 }
+
+/* --- Team Avatar & Feature Image Styling --- */
+.team-avatar {
+  overflow: hidden;
+  border: 3px solid var(--green-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.problem-feature-image img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-feature-image img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+  .problem-inner {
+    grid-template-columns: 1fr;
+  }
+  
+  .problem-visual {
+    position: static;
+  }
+}

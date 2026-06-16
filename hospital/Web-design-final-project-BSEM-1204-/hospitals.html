@@ -66,46 +66,12 @@
       </div>
 
       <!-- Map + List Layout -->
-    
-<div class="map-list-layout">
+      <div class="map-list-layout">
+        <!-- LEFT: Hospital List -->
+        <div class="hospital-list-panel" id="hospitalList">
+          <p class="results-count">Showing <strong id="count">8</strong> hospitals</p>
 
-  <!-- LEFT: Hospital List -->
-  <div class="hospital-list-panel">
-
-    <p class="results-count">
-      Showing <strong>8 hospitals</strong> in Sierra Leone
-    </p>
-
-    <!-- (Your hospital items stay EXACT SAME — no need to rewrite all) -->
-    <!-- KEEP ALL YOUR hosp-item DIVS HERE -->
-
-  </div>
-
-  <!-- RIGHT: MAP PANEL (NEW IMPORTANT UPGRADE) -->
-  <div class="map-panel">
-
-    <div class="map-label">
-      🗺 Live Hospital Locations (Demo View)
-    </div>
-
-    <iframe
-      class="google-map-frame"
-      src="https://www.google.com/maps?q=Freetown%20Sierra%20Leone%20hospitals&output=embed">
-    </iframe>
-
-    <div class="map-note">
-      Click a hospital on the left to view location details
-    </div>
-
-  </div>
-
-</div>
-
-        <!-- Hospital List -->
-        <div class="hospital-list-panel">
-          <p class="results-count">Showing <strong>8 hospitals</strong></p>
-
-          <div class="hosp-item active-item" onclick="selectHospital(this, 'Connaught Hospital')">
+          <div class="hosp-item active-item" data-district="Western Area Urban" data-type="Government" onclick="selectHospital(this, 'Connaught Hospital')">
             <div class="hosp-item-top">
               <h4>Connaught Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -121,7 +87,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Choithram Memorial Hospital')">
+          <div class="hosp-item" data-district="Western Area Urban" data-type="Private" onclick="selectHospital(this, 'Choithram Memorial Hospital')">
             <div class="hosp-item-top">
               <h4>Choithram Memorial Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -136,7 +102,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Ola During Children Hospital')">
+          <div class="hosp-item" data-district="Western Area Urban" data-type="Government" onclick="selectHospital(this, 'Ola During Children Hospital')">
             <div class="hosp-item-top">
               <h4>Ola During Children's Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -151,7 +117,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Lumley Government Hospital')">
+          <div class="hosp-item" data-district="Western Area Urban" data-type="Government" onclick="selectHospital(this, 'Lumley Government Hospital')">
             <div class="hosp-item-top">
               <h4>Lumley Government Hospital</h4>
               <span class="status-badge closed">Closed</span>
@@ -166,7 +132,7 @@
             <button class="btn-small map-btn">Unavailable</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Bo Government Hospital')">
+          <div class="hosp-item" data-district="Bo" data-type="Government" onclick="selectHospital(this, 'Bo Government Hospital')">
             <div class="hosp-item-top">
               <h4>Bo Government Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -181,7 +147,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Kenema Government Hospital')">
+          <div class="hosp-item" data-district="Kenema" data-type="Government" onclick="selectHospital(this, 'Kenema Government Hospital')">
             <div class="hosp-item-top">
               <h4>Kenema Government Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -196,7 +162,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Makeni Government Hospital')">
+          <div class="hosp-item" data-district="Makeni" data-type="Government" onclick="selectHospital(this, 'Makeni Government Hospital')">
             <div class="hosp-item-top">
               <h4>Makeni Government Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -211,7 +177,7 @@
             <button class="btn-small map-btn">Available</button>
           </div>
 
-          <div class="hosp-item" onclick="selectHospital(this, 'Mercy Hospital')">
+          <div class="hosp-item" data-district="Western Area Urban" data-type="Private" onclick="selectHospital(this, 'Mercy Hospital')">
             <div class="hosp-item-top">
               <h4>Mercy Hospital</h4>
               <span class="status-badge open">Open</span>
@@ -225,8 +191,91 @@
             </div>
             <button class="btn-small map-btn">Available</button>
           </div>
-
         </div>
+
+        <!-- RIGHT: MAP PANEL -->
+        <div class="map-panel">
+          <div class="map-label">
+            🗺 Live Hospital Locations (Demo View)
+          </div>
+          <iframe
+            id="mapFrame"
+            class="google-map-frame"
+            src="https://www.google.com/maps?q=Freetown%20Sierra%20Leone%20hospitals&output=embed">
+          </iframe>
+          <div class="map-note">
+            Click a hospital on the left to view location details
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function selectHospital(element, name) {
+      // Remove active class from all items
+      const items = document.querySelectorAll('.hosp-item');
+      items.forEach(item => item.classList.remove('active-item'));
+      
+      // Add active class to selected item
+      element.classList.add('active-item');
+      
+      // Update Map
+      const mapFrame = document.getElementById('mapFrame');
+      const searchUrl = `https://www.google.com/maps?q=${encodeURIComponent(name + ' Sierra Leone')}&output=embed`;
+      mapFrame.src = searchUrl;
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    const districtFilter = document.getElementById('districtFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const searchBtn = document.getElementById('searchBtn');
+    const hospitalItems = document.querySelectorAll('.hosp-item');
+    const countDisplay = document.getElementById('count');
+
+    function filterHospitals() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const districtValue = districtFilter.value;
+      const typeValue = typeFilter.value;
+      
+      let visibleCount = 0;
+
+      hospitalItems.forEach(item => {
+        const name = item.querySelector('h4').innerText.toLowerCase();
+        const address = item.querySelector('.hosp-addr').innerText.toLowerCase();
+        const district = item.getAttribute('data-district');
+        const type = item.getAttribute('data-type');
+
+        const matchesSearch = name.includes(searchTerm) || address.includes(searchTerm);
+        const matchesDistrict = districtValue === "" || district === districtValue;
+        const matchesType = typeValue === "" || type === typeValue;
+
+        if (matchesSearch && matchesDistrict && matchesType) {
+          item.style.display = "block";
+          visibleCount++;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      countDisplay.innerText = visibleCount;
+    }
+
+    searchBtn.addEventListener('click', filterHospitals);
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') filterHospitals();
+    });
+    districtFilter.addEventListener('change', filterHospitals);
+    typeFilter.addEventListener('change', filterHospitals);
+
+    // Mobile Menu Toggle
+     const hamburger = document.getElementById('hamburger');
+     const mobileMenu = document.getElementById('mobileMenu');
+     hamburger.addEventListener('click', () => {
+       mobileMenu.classList.toggle('open');
+     });
+  </script>
+
 
     
 

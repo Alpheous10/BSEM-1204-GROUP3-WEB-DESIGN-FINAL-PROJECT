@@ -70,15 +70,15 @@
       </div>
 
       <!-- Doctor Cards Grid -->
-      <div class="doctors-grid">
+      <div class="doctors-grid" id="doctorsGrid">
 
         <!-- Doctor 1 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="General Practice" data-hospital="Connaught Hospital">
           <div class="doctor-avatar">
            <img src="image/Fatima Osman Jalloh.jpg.jpeg" alt="Dr. Fatima Osman Jalloh">
           </div>
           <div class="doctor-info">
-            <h3>Dr.  Fatima Osman Jalloh</h3>
+            <h3>Dr. Fatima Osman Jalloh</h3>
             <span class="specialty-badge">General Practice</span>
             <p class="doctor-hospital">🏥 Connaught Hospital</p>
             <p class="doctor-bio">MBBS, University of Sierra Leone. 12 years experience in general and community medicine.</p>
@@ -94,12 +94,12 @@
                 <span class="time-slot available">04:00 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Fatima Osman Jalloh', 'Connaught Hospital')">Book Appointment</button>
           </div>
         </div>
 
         <!-- Doctor 2 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="Cardiology" data-hospital="Choithram Memorial Hospital">
            <div class="doctor-avatar">
            <img src="image/Mohamed Lamin Koroma.JPG.jpeg" alt="Dr. Mohamed Lamin Koroma">
           </div>
@@ -119,12 +119,12 @@
                 <span class="time-slot available">04:00 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Mohamed Lamin Koroma', 'Choithram Memorial Hospital')">Book Appointment</button>
           </div>
         </div>
 
         <!-- Doctor 3 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="Pediatrics" data-hospital="Ola During Children's Hospital">
           <div class="doctor-avatar">
             <img src="image/alpheous m conteh.jpg.jpeg" alt="Dr. Alpheous Conteh">
           </div>
@@ -145,12 +145,12 @@
                 <span class="time-slot available">03:30 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Alpheous Conteh', 'Ola During Children\'s Hospital')">Book Appointment</button>
           </div>
         </div>
 
         <!-- Doctor 4 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="Surgery" data-hospital="Connaught Hospital">
           <div class="doctor-avatar">
             <img src="image/mustapha bayoh.jpg.jpeg" alt="Dr. Mustapha Bayoh">
           </div>
@@ -170,12 +170,12 @@
                 <span class="time-slot booked">03:00 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Mustapha Bayoh', 'Connaught Hospital')">Book Appointment</button>
           </div>
         </div>
 
         <!-- Doctor 5 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="Obstetrics & Gynecology" data-hospital="Mercy Hospital">
           <div class="doctor-avatar">
             <img src="image/sia.jpg.jpeg" alt="Dr. Sia Sesay">
           </div>
@@ -195,12 +195,12 @@
                 <span class="time-slot booked">04:00 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Sia Sesay', 'Mercy Hospital')">Book Appointment</button>
           </div>
         </div>
 
         <!-- Doctor 6 -->
-        <div class="doctor-card">
+        <div class="doctor-card" data-specialty="Dentistry" data-hospital="Choithram Memorial Hospital">
           <div class="doctor-avatar">
             <img src="image/Richard.jpg.jpeg" alt="Dr. Richard Mansaray">
           </div>
@@ -220,7 +220,7 @@
                 <span class="time-slot available">04:00 PM</span>
               </div>
             </div>
-            <button class="btn-primary btn-book">Book Appointment</button>
+            <button class="btn-primary btn-book" onclick="openBookingModal('Dr. Richard Mansaray', 'Choithram Memorial Hospital')">Book Appointment</button>
           </div>
         </div>
 
@@ -233,7 +233,7 @@
     <div class="modal">
       <button class="modal-close" id="modalClose">✕</button>
       <h2>Confirm Your Appointment</h2>
-      <p class="modal-sub">Fill in your details to complete the booking</p>
+      <p class="modal-sub">Fill in your details for <strong id="selectedDoctor"></strong> at <span id="selectedHospital"></span></p>
       <div class="modal-form">
         <label>Full Name</label>
         <input type="text" id="patientName" placeholder="Your full name">
@@ -248,6 +248,96 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const bookingModal = document.getElementById('bookingModal');
+    const modalClose = document.getElementById('modalClose');
+    const selectedDoctorSpan = document.getElementById('selectedDoctor');
+    const selectedHospitalSpan = document.getElementById('selectedHospital');
+    
+    let currentDoctor = "";
+    let currentHospital = "";
+
+    function openBookingModal(doctor, hospital) {
+      currentDoctor = doctor;
+      currentHospital = hospital;
+      selectedDoctorSpan.innerText = doctor;
+      selectedHospitalSpan.innerText = hospital;
+      bookingModal.classList.add('active');
+    }
+
+    modalClose.addEventListener('click', () => {
+      bookingModal.classList.remove('active');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === bookingModal) {
+        bookingModal.classList.remove('active');
+      }
+    });
+
+    function confirmBooking() {
+      const name = document.getElementById('patientName').value;
+      const phone = document.getElementById('patientPhone').value;
+      const reason = document.getElementById('visitReason').value;
+
+      if (!name || !phone || !reason) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const appointment = {
+        patientName: name,
+        patientPhone: phone,
+        doctor: currentDoctor,
+        hospital: currentHospital,
+        visitReason: reason,
+        date: new Date().toLocaleDateString()
+      };
+
+      localStorage.setItem("appointment", JSON.stringify(appointment));
+      alert("Appointment booked successfully!");
+      window.location.href = "patient-portal.html";
+    }
+
+    // Filter Logic
+    const specFilter = document.getElementById('specFilter');
+    const hospitalFilter = document.getElementById('hospitalFilter');
+    const dateFilter = document.getElementById('dateFilter');
+    const filterBtn = document.querySelector('.appt-filters button');
+    const doctorCards = document.querySelectorAll('.doctor-card');
+
+    function filterDoctors() {
+      const specValue = specFilter.value;
+      const hospValue = hospitalFilter.value;
+      
+      doctorCards.forEach(card => {
+        const specialty = card.getAttribute('data-specialty');
+        const hospital = card.getAttribute('data-hospital');
+
+        const matchesSpec = specValue === "" || specialty === specValue;
+        const matchesHosp = hospValue === "" || hospital === hospValue;
+
+        if (matchesSpec && matchesHosp) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    filterBtn.addEventListener('click', filterDoctors);
+    specFilter.addEventListener('change', filterDoctors);
+    hospitalFilter.addEventListener('change', filterDoctors);
+
+    // Mobile Menu Toggle
+     const hamburger = document.getElementById('hamburger');
+     const mobileMenu = document.getElementById('mobileMenu');
+     hamburger.addEventListener('click', () => {
+       mobileMenu.classList.toggle('open');
+     });
+  </script>
+
 
   <footer class="footer">
     <div class="container footer-inner">
