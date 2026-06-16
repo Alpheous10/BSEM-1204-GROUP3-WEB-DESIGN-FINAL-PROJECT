@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salone HealthConnect</title>
+
+  <meta name="description"
+        content="Salone HealthConnect helps people across Sierra Leone find hospitals, book appointments, and donate blood.">
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="hospitals.html">Find Hospital</a></li>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="patient-portal.html">patient</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+      </ul>
+
+      <a href="login.html" class="btn-nav">Login / Sign Up</a>
+
+      <button class="hamburger" id="hamburger">
+        &#9776;
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="hospitals.html">Find Hospital</a>
+      <a href="appointments.html">Book Appointment</a>
+      <a href="donate.html">Donate</a>
+      <a href="about_us.html">About Us</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        Sierra Leone's Healthcare Directory
+      </p>
+
+      <h1>
+        Find Care.<br>
+        Fast. Anywhere.
+      </h1>
+
+      <p class="hero-sub">
+        Locate the nearest open hospital, book a doctor, or donate blood — all in one place, built for Sierra Leone.
+      </p>
+
+      <div class="hero-actions">
+        <a href="hospitals.html" class="btn-primary">Find a Hospital</a>
+       
+
+        <a href="appointments.html" class="btn-outline">
+          Book Appointment
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num">120+</span>
+        <span class="stat-label">Listed Facilities</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-num">14</span>
+        <span class="stat-label">Districts Covered</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-num">24/7</span>
+        <span class="stat-label">Emergency Info</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACCESS -->
+  <section class="quick-access">
+    <div class="container">
+
+      <h2 class="section-title">
+        What do you need?
+      </h2>
+
+      <div class="qa-grid">
+
+        <a href="hospitals.html" class="qa-card">
+
+         <img src="image/Find Hospitals.jpeg" alt="Hospital" class="qa-img">
+
+         <div class="qa-icon">🏥</div>
+         <h3>Find a Hospital</h3>
+         <p>Search and locate open hospitals near you.</p>
+       </a>
+
+        <a href="appointments.html" class="qa-card">
+
+           <img src="image/Book Doctor.jpeg" alt="Doctor" class="qa-img">
+
+           <div class="qa-icon">📅</div>
+            <h3>Book Appointment</h3>
+           <p>Choose a doctor, specialty, date and time.</p>
+
+        </a>
+
+        <a href="donate.html" class="qa-card">
+             <img src="image/Donate Blood.jpeg" alt="Doctor" class="qa-img">
+          <div class="qa-icon">🩸</div>
+          <h3>Donate Blood</h3>
+          <p>Register as a blood donor or find a donation centre.</p>
+        </a>
+
+        <a href="donate.html" class="qa-card">
+            <img src="image/help.jpg" alt="">
+          <div class="qa-icon">🆘</div>
+          <h3>Emergency Help</h3>
+          <p>Quick access to emergency contacts.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EMERGENCY -->
+  <section class="emergency-banner">
+    <div class="container">
+      <div class="emergency-inner">
+
+        <div class="emergency-icon">
+          🚨
+        </div>
+
+        <div>
+          <h3>Medical Emergency?</h3>
+          <p>
+            Call the Sierra Leone emergency line immediately.
+          </p>
+        </div>
+
+        <div class="emergency-numbers">
+          <a href="tel:999" class="btn-emergency">
+            Call 999
+          </a>
+
+          <a href="tel:117" class="btn-emergency-outline">
+            Ambulance 117
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED HOSPITALS -->
+  <section class="featured-hospitals">
+    <div class="container">
+
+      <h2 class="section-title">
+        Featured Hospitals in Freetown
+      </h2>
+
+      <p class="section-sub">
+        Verified facilities with up-to-date contact details.
+      </p>
+
+      <div class="hospital-grid">
+
+        <div class="hospital-card">
+          <div class="hospital-status open">Open Now</div>
+          <h3>Connaught Hospital</h3>
+          <p class="hospital-type">Government · General Hospital</p>
+          <p class="hospital-address">📍 Lightfoot Boston St, Freetown</p>
+          <p class="hospital-phone">📞 +232 22 227 302</p>
+
+          <div class="hospital-tags">
+            <span class="tag">Emergency</span>
+            <span class="tag">Surgery</span>
+            <span class="tag">Maternity</span>
+          </div>
+
+          <a href="hospitals.html" class="btn-small">
+            View on Map
+          </a>
+        </div>
+
+        <div class="hospital-card">
+          <div class="hospital-status open">Open Now</div>
+          <h3>Choithram Memorial Hospital</h3>
+          <p class="hospital-type">Private · General Hospital</p>
+          <p class="hospital-address">📍 Wilberforce, Freetown</p>
+          <p class="hospital-phone">📞 +232 22 240 950</p>
+
+          <div class="hospital-tags">
+            <span class="tag">Cardiology</span>
+            <span class="tag">Pediatrics</span>
+            <span class="tag">ICU</span>
+          </div>
+
+          <a href="hospitals.html" class="btn-small">
+            View on Map
+          </a>
+        </div>
+
+        <div class="hospital-card">
+          <div class="hospital-status closed">Closed</div>
+          <h3>Bo Government Hospital</h3>
+          <p class="hospital-type">Government · Regional Hospital</p>
+          <p class="hospital-address">📍 Bo, Southern Province</p>
+          <p class="hospital-phone">📞 +232 32 202 000</p>
+
+          <div class="hospital-tags">
+            <span class="tag">General</span>
+            <span class="tag">Maternity</span>
+          </div>
+
+          <a href="hospitals.html" class="btn-small">
+            View on Map
+          </a>
+        </div>
+
+      </div>
+
+      <div class="center-link">
+        <a href="hospitals.html" class="btn-primary">
+          View All Hospitals
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        <p class="brand-name-footer">
+          <span class="brand-cross">+</span>
+          Salone HealthConnect
+        </p>
+
+        <p class="footer-desc">
+          Bridging the healthcare information gap in Sierra Leone.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="hospitals.html">Find Hospital</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+      </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © 2026 Salone HealthConnect. All rights reserved.
+      </p>
+    </div>
+
+  </footer>
+
+  <!-- MOBILE MENU SCRIPT -->
+  <script>
+    document.getElementById("hamburger").addEventListener("click", function () {
+      document.getElementById("mobileMenu").classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>

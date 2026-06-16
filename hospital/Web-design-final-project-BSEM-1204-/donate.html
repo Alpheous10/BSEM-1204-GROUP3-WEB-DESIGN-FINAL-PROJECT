@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate – Salone HealthConnect</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+    
+      <ul class="nav-links"> 
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospitals.html">Find Hospital</a></li>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="donate.html" class="active">Donate</a></li>
+       
+      </ul>
+    </div>
+     
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="hospitals.html">Find Hospital</a>
+      <a href="appointments.html">Book Appointment</a>
+      <a href="donate.html">Donate</a>
+      <a href="about_us.html">About us</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Donate & Support</h1>
+      <p>Give blood, medicines, or equipment to those who need it most across Sierra Leone</p>
+    </div>
+  </div>
+
+  <!-- Donate Cards -->
+  <section class="donate-section" id="items">
+    <div class="container">
+
+      <div class="donate-intro">
+        <h2>Every donation saves a life</h2>
+        <p>Hospitals and clinics across Sierra Leone face critical shortages of blood, medicines, and medical equipment. Your contribution — no matter how small — makes a real difference in someone's survival.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="donate-tabs">
+        <button class="tab-btn active" onclick="switchTab(this, 'blood')">🩸 Blood Donation</button>
+        <button class="tab-btn" onclick="switchTab(this, 'medicines')">💊 Medicines</button>
+        <button class="tab-btn" onclick="switchTab(this, 'equipment')">🩺 Equipment</button>
+        <button class="tab-btn" onclick="switchTab(this, 'financial')">💰 Financial</button>
+      </div>
+
+      <!-- Blood Donation -->
+      <div class="donate-grid" id="tab-blood">
+
+        <div class="donate-card">
+          <div class="donate-card-icon">🩸</div>
+          <span class="urgency-badge urgent">Urgent Need</span>
+          <h3>Donate Blood</h3>
+          <p>Connaught Hospital urgently needs blood donors. O+ and A+ blood types are critically low. Walk in or register below to be contacted.</p>
+          <div class="blood-types">
+            <button class="blood-type-btn">O+</button>
+            <button class="blood-type-btn">O−</button>
+            <button class="blood-type-btn">A+</button>
+            <button class="blood-type-btn">A−</button>
+            <button class="blood-type-btn">B+</button>
+            <button class="blood-type-btn">B−</button>
+            <button class="blood-type-btn">AB+</button>
+            <button class="blood-type-btn">AB−</button>
+          </div>
+          <button class="btn-primary" onclick="scrollToForm()">Register as Donor</button>
+        </div>
+
+        <div class="donate-card">
+          <div class="donate-card-icon">📍</div>
+          <span class="urgency-badge">Active Centres</span>
+          <h3>Blood Banks Near You</h3>
+          <p>Find the nearest open blood bank or donation centre in your district.</p>
+          <ul style="font-size:13px; color:var(--text-muted); line-height:2; margin-bottom:16px; padding-left: 4px;">
+            <li>🏥 Connaught Hospital Blood Bank — Freetown</li>
+            <li>🏥 Choithram Hospital — Freetown</li>
+            <li>🏥 Bo Government Hospital — Bo</li>
+            <li>🏥 Kenema Blood Bank — Kenema</li>
+            <li>🏥 Makeni Hospital — Makeni</li>
+          </ul>
+          <a href="hospitals.html" class="btn-small" style="display:inline-block; width:100%; text-align:center;">View on Map</a>
+        </div>
+
+        <div class="donate-card">
+          <div class="donate-card-icon">📊</div>
+          <span class="urgency-badge">Current Levels</span>
+          <h3>Blood Stock Status</h3>
+          <p>Live blood stock levels at Connaught Hospital Blood Bank.</p>
+          <div style="display:flex; flex-direction:column; gap:8px; margin: 12px 0;">
+            <div class="stock-row"><span>O+</span><div class="stock-bar"><div class="stock-fill low" style="width:20%"></div></div><span class="stock-label low">Critical</span></div>
+            <div class="stock-row"><span>A+</span><div class="stock-bar"><div class="stock-fill low" style="width:30%"></div></div><span class="stock-label low">Low</span></div>
+            <div class="stock-row"><span>B+</span><div class="stock-bar"><div class="stock-fill mid" style="width:55%"></div></div><span class="stock-label mid">Moderate</span></div>
+            <div class="stock-row"><span>AB+</span><div class="stock-bar"><div class="stock-fill ok" style="width:75%"></div></div><span class="stock-label ok">Adequate</span></div>
+            <div class="stock-row"><span>O−</span><div class="stock-bar"><div class="stock-fill low" style="width:10%"></div></div><span class="stock-label low">Critical</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Medicines (hidden by default) -->
+      <div class="donate-grid" id="tab-medicines" style="display:none;">
+        <div class="donate-card">
+          <div class="donate-card-icon">💊</div>
+          <span class="urgency-badge urgent">Needed Now</span>
+          <h3>Malaria Medications</h3>
+          <p>ACT (Artemisinin-based Combination Therapy) medications are critically needed at rural health centres in Tonkolili and Kono districts.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Medicines</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">🩹</div>
+          <span class="urgency-badge">Needed</span>
+          <h3>Wound Care Supplies</h3>
+          <p>Bandages, antiseptics, and wound dressing kits are needed at emergency departments across Freetown.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Supplies</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">👶</div>
+          <span class="urgency-badge urgent">Urgent</span>
+          <h3>Maternal Health Supplies</h3>
+          <p>Iron supplements, folic acid, and prenatal vitamins for pregnant women in under-served communities.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Now</button>
+        </div>
+      </div>
+
+      <!-- Equipment (hidden by default) -->
+      <div class="donate-grid" id="tab-equipment" style="display:none;">
+        <div class="donate-card">
+          <div class="donate-card-icon">🩺</div>
+          <span class="urgency-badge urgent">Critical</span>
+          <h3>Diagnostic Equipment</h3>
+          <p>Blood pressure monitors, glucometers, and pulse oximeters are needed at community health posts in rural districts.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Equipment</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">🔬</div>
+          <span class="urgency-badge">Needed</span>
+          <h3>Lab Supplies</h3>
+          <p>Test kits for malaria, HIV, and TB rapid testing for district hospitals with limited lab capacity.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Supplies</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">🛏️</div>
+          <span class="urgency-badge">Needed</span>
+          <h3>Hospital Furniture</h3>
+          <p>Hospital beds, mattresses, and wheelchairs for expanding wards in government hospitals in Bo and Kenema.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Furniture</button>
+        </div>
+      </div>
+
+      <!-- Financial (hidden by default) -->
+      <div class="donate-grid" id="tab-financial" style="display:none;">
+        <div class="donate-card">
+          <div class="donate-card-icon">💰</div>
+          <span class="urgency-badge">Open</span>
+          <h3>General Health Fund</h3>
+          <p>Contribute to the Salone HealthConnect general fund which supports underfunded clinics and emergency care access.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Donate Money</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">🏫</div>
+          <span class="urgency-badge">Open</span>
+          <h3>Community Clinic Support</h3>
+          <p>Sponsor a community health post for a month — covering medicines, supplies and health worker incentives.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Become a Sponsor</button>
+        </div>
+        <div class="donate-card">
+          <div class="donate-card-icon">👩‍⚕️</div>
+          <span class="urgency-badge">Open</span>
+          <h3>Health Worker Training</h3>
+          <p>Fund training for community health workers in remote districts who serve as the first line of care.</p>
+          <button class="btn-primary" onclick="scrollToForm()">Fund Training</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Donor Registration Form -->
+  <section class="donate-form-section" id="donorForm">
+    <div class="container">
+      <div class="donate-form-wrap">
+        <h2>Register as a Donor</h2>
+        <p>Fill in your details and we will connect you with the nearest facility in need.</p>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>First Name</label>
+           <input type="text" id="firstName" placeholder="e.g. Aminata"/>
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" id="lastName" placeholder="e.g. Bangura"/>
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" id="phoneNumber" placeholder="+232 ..."/>
+          </div>
+          <div class="form-field">
+             <label>District</label>
+              <select id="district">
+               <option value="">Select district</option>
+               <option>Western Area Urban</option>
+               <option>Western Area Rural</option>
+               <option>Bo</option>
+               <option>Kenema</option>
+               <option>Makeni</option>
+               <option>Kono</option>
+               <option>Port Loko</option>
+               <option>Tonkolili</option>
+              </select>
+           </div>
+          <div class="form-field">
+            <label>Donation Type</label>
+            <select id="donationType">
+              <option>Blood</option>
+              <option>Medicines</option>
+              <option>Equipment</option>
+              <option>Financial</option>
+            </select>
+         </div>
+          <div class="form-field">
+            <label>Blood Type (if donating blood)</label>
+            <select id="bloodType">
+              <option value="">Select blood type</option>
+              <option>O+</option>
+              <option>O−</option>
+              <option>A+</option>
+              <option>A−</option>
+              <option>B+</option>
+              <option>B−</option>
+              <option>AB+</option>
+              <option>AB−</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Additional Notes</label>
+            <textarea id="notes"placeholder="Any additional information about your donation..."></textarea>
+          </div>
+        </div>
+       <button class="btn-primary"style="width:100%; padding:14px; font-size:15px;"onclick="submitDonation()">Submit Donation Registration</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="brand-name-footer"><span class="brand-cross">+</span> Salone HealthConnect</p>
+        <p class="footer-desc">Bridging the healthcare information gap in Sierra Leone.</p>
+      </div>
+      <div class="footer-links">
+        <a href="hospitals.html">Find Hospital</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Salone HealthConnect. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <style>
+    .stock-row { display:flex; align-items:center; gap:10px; font-size:12px; font-weight:600; }
+    .stock-bar { flex:1; height:8px; background:var(--gray-100); border-radius:20px; overflow:hidden; }
+    .stock-fill { height:100%; border-radius:20px; transition: width 0.4s; }
+    .stock-fill.low  { background:#C0392B; }
+    .stock-fill.mid  { background:#F39C12; }
+    .stock-fill.ok   { background:#1A8C6A; }
+    .stock-label.low  { color:#C0392B; min-width:60px; }
+    .stock-label.mid  { color:#F39C12; min-width:60px; }
+    .stock-label.ok   { color:#1A8C6A; min-width:60px; }
+  </style>
+  <script>
+
+  // Switch donation tabs
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    ['blood', 'medicines', 'equipment', 'financial'].forEach(id => {
+      document.getElementById('tab-' + id).style.display =
+        (id === tabId) ? 'grid' : 'none';
+    });
+  }
+
+  // Scroll to donor form
+  function scrollToForm() {
+    document.getElementById('donorForm').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  // Blood type buttons
+  document.querySelectorAll('.blood-type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.blood-type-btn')
+        .forEach(b => b.classList.remove('active'));
+
+      btn.classList.add('active');
+    });
+  });
+
+  // Hamburger menu (safe)
+  const hamburger = document.getElementById("hamburger");
+
+  if (hamburger) {
+    hamburger.addEventListener("click", function () {
+      document.getElementById("mobileMenu").classList.toggle("open");
+    });
+  }
+
+  // Submit donor registration
+  function submitDonation() {
+
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let phoneNumber = document.getElementById("phoneNumber").value.trim();
+    let district = document.getElementById("district").value;
+    let donationType = document.getElementById("donationType").value;
+    let bloodType = document.getElementById("bloodType").value;
+    let notes = document.getElementById("notes").value.trim();
+
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      phoneNumber === "" ||
+      district === ""
+    ) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    let donor = {
+      firstName,
+      lastName,
+      phoneNumber,
+      district,
+      donationType,
+      bloodType,
+      notes
+    };
+
+    // Save to localStorage
+    let donors = JSON.parse(localStorage.getItem("donors")) || [];
+    donors.push(donor);
+    localStorage.setItem("donors", JSON.stringify(donors));
+
+    alert(
+      "✅ Donation registration successful!\n\n" +
+      "Name: " + firstName + " " + lastName +
+      "\nPhone: " + phoneNumber +
+      "\nDistrict: " + district +
+      "\nDonation Type: " + donationType
+    );
+
+    // Clear form
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("phoneNumber").value = "";
+    document.getElementById("district").selectedIndex = 0;
+    document.getElementById("donationType").selectedIndex = 0;
+    document.getElementById("bloodType").selectedIndex = 0;
+    document.getElementById("notes").value = "";
+  }
+
+</script>
+
+</body>
+</html>

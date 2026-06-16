@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment – Salone HealthConnect</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospitals.html">Find Hospital</a></li>
+        <li><a href="appointments.html" class="active">Book Appointment</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+      <a href="login.html" class="btn-nav">Login / Sign Up</a>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="hospitals.html">Find Hospital</a>
+      <a href="appointments.html">Book Appointment</a>
+      <a href="donate.html">Donate</a>
+      <a href="about_us.html">About Us</a>
+    </div>
+    
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Book an Appointment</h1>
+      <p>Choose a doctor, specialty, date and time that works for you</p>
+    </div>
+  </div>
+
+  <section class="appointments-section">
+    <div class="container">
+
+      <!-- Filters -->
+      <div class="appt-filters">
+        <select id="specFilter">
+          <option value="">All Specialties</option>
+          <option>General Practice</option>
+          <option>Pediatrics</option>
+          <option>Cardiology</option>
+          <option>Obstetrics & Gynecology</option>
+          <option>Surgery</option>
+          <option>Dentistry</option>
+          <option>Psychiatrist</option>
+          <option>Pathologist</option>
+        
+        </select>
+        <select id="hospitalFilter">
+          <option value="">All Hospitals</option>
+          <option>Connaught Hospital</option>
+          <option>Choithram Memorial Hospital</option>
+          <option>Ola During Children's Hospital</option>
+          <option>Mercy Hospital</option>
+        </select>
+        <input type="date" id="dateFilter"/>
+        <button class="btn-primary">Filter</button>
+      </div>
+
+      <!-- Doctor Cards Grid -->
+      <div class="doctors-grid">
+
+        <!-- Doctor 1 -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">
+           <img src="image/Fatima Osman Jalloh.jpg.jpeg" alt="Dr. Fatima Osman Jalloh">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr.  Fatima Osman Jalloh</h3>
+            <span class="specialty-badge">General Practice</span>
+            <p class="doctor-hospital">🏥 Connaught Hospital</p>
+            <p class="doctor-bio">MBBS, University of Sierra Leone. 12 years experience in general and community medicine.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Mon, Wed, Fri</strong></p>
+              <div class="time-slots">
+                <span class="time-slot available">08:00 AM</span>
+                <span class="time-slot available">09:00 AM</span>
+                <span class="time-slot booked">10:00 AM</span>
+                <span class="time-slot available">11:00 AM</span>
+                <span class="time-slot booked">02:00 PM</span>
+                <span class="time-slot available">03:00 PM</span>
+                <span class="time-slot available">04:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="doctor-card">
+           <div class="doctor-avatar">
+           <img src="image/Mohamed Lamin Koroma.JPG.jpeg" alt="Dr. Mohamed Lamin Koroma">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Mohamed Lamin Koroma</h3>
+            <span class="specialty-badge specialty-cardio">Cardiology</span>
+            <p class="doctor-hospital">🏥 Choithram Memorial Hospital</p>
+            <p class="doctor-bio">MD, Cardiology. Specialist in heart disease management and cardiac surgery. 18 years experience.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Tue, Thu</strong></p>
+              <div class="time-slots">
+                <span class="time-slot booked">08:00 AM</span>
+                <span class="time-slot available">09:30 AM</span>
+                <span class="time-slot available">11:00 AM</span>
+                <span class="time-slot booked">01:00 PM</span>
+                <span class="time-slot available">02:30 PM</span>
+                <span class="time-slot available">04:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">
+            <img src="image/alpheous m conteh.jpg.jpeg" alt="Dr. Alpheous Conteh">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Alpheous Conteh</h3>
+            <span class="specialty-badge specialty-peds">Pediatrics</span>
+            <p class="doctor-hospital">🏥 Ola During Children's Hospital</p>
+            <p class="doctor-bio">Pediatric specialist with focus on neonatal care and childhood disease. FWACS certified.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Mon–Fri</strong></p>
+              <div class="time-slots">
+                <span class="time-slot available">08:00 AM</span>
+                <span class="time-slot available">09:00 AM</span>
+                <span class="time-slot available">10:00 AM</span>
+                <span class="time-slot booked">11:00 AM</span>
+                <span class="time-slot available">12:00 PM</span>
+                <span class="time-slot booked">02:00 PM</span>
+                <span class="time-slot available">03:30 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 4 -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">
+            <img src="image/mustapha bayoh.jpg.jpeg" alt="Dr. Mustapha Bayoh">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Mustapha Bayoh</h3>
+            <span class="specialty-badge specialty-surgery">Surgery</span>
+            <p class="doctor-hospital">🏥 Connaught Hospital</p>
+            <p class="doctor-bio">General and laparoscopic surgeon. FWACS, FICS. Over 20 years in general and emergency surgery.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Mon, Wed</strong></p>
+              <div class="time-slots">
+                <span class="time-slot booked">08:00 AM</span>
+                <span class="time-slot booked">09:00 AM</span>
+                <span class="time-slot available">10:00 AM</span>
+                <span class="time-slot available">11:00 AM</span>
+                <span class="time-slot available">01:00 PM</span>
+                <span class="time-slot booked">03:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 5 -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">
+            <img src="image/sia.jpg.jpeg" alt="Dr. Sia Sesay">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Sia Sesay</h3>
+            <span class="specialty-badge specialty-obgyn">Obstetrics & Gynecology</span>
+            <p class="doctor-hospital">🏥 Mercy Hospital</p>
+            <p class="doctor-bio">OB/GYN specialist dedicated to women's health, maternal care and safe deliveries across Sierra Leone.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Tue, Thu, Sat</strong></p>
+              <div class="time-slots">
+                <span class="time-slot available">08:00 AM</span>
+                <span class="time-slot booked">09:00 AM</span>
+                <span class="time-slot available">10:30 AM</span>
+                <span class="time-slot available">12:00 PM</span>
+                <span class="time-slot available">02:00 PM</span>
+                <span class="time-slot booked">04:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 6 -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">
+            <img src="image/Richard.jpg.jpeg" alt="Dr. Richard Mansaray">
+          </div>
+          <div class="doctor-info">
+            <h3>Dr. Richard Mansaray</h3>
+            <span class="specialty-badge specialty-dent">Dentistry</span>
+            <p class="doctor-hospital">🏥 Choithram Memorial Hospital</p>
+            <p class="doctor-bio">Dental surgeon specializing in oral health, extraction, and restorative dentistry. BDS, MRCS.</p>
+            <div class="doctor-schedule">
+              <p class="schedule-title">Available times — <strong>Mon, Tue, Thu</strong></p>
+              <div class="time-slots">
+                <span class="time-slot available">08:30 AM</span>
+                <span class="time-slot available">10:00 AM</span>
+                <span class="time-slot booked">11:30 AM</span>
+                <span class="time-slot available">01:00 PM</span>
+                <span class="time-slot available">02:30 PM</span>
+                <span class="time-slot available">04:00 PM</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-book">Book Appointment</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h2>Confirm Your Appointment</h2>
+      <p class="modal-sub">Fill in your details to complete the booking</p>
+      <div class="modal-form">
+        <label>Full Name</label>
+        <input type="text" id="patientName" placeholder="Your full name">
+
+       <label>Phone Number</label>
+       <input type="tel" id="patientPhone" placeholder="+232 ...">
+
+       <label>Reason for Visit</label>
+       <textarea id="visitReason"placeholder="Brief description of your symptoms or reason..."></textarea>
+
+       <button class="btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="brand-name-footer"><span class="brand-cross">+</span> Salone HealthConnect</p>
+        <p class="footer-desc">Bridging the healthcare information gap in Sierra Leone.</p>
+      </div>
+      <div class="footer-links">
+        <a href="hospitals.html">Find Hospital</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Salone HealthConnect. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+
+let selectedDoctor = "";
+
+/* =========================
+   OPEN BOOKING MODAL
+========================= */
+document.querySelectorAll(".btn-book").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        selectedDoctor =
+            btn.closest(".doctor-card")
+               .querySelector("h3").innerText;
+
+        document.getElementById("bookingModal")
+            .classList.add("show");
+
+    });
+
+});
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+document.getElementById("modalClose").addEventListener("click", () => {
+
+    document.getElementById("bookingModal")
+        .classList.remove("show");
+
+});
+
+
+/* =========================
+   SELECT TIME SLOT
+========================= */
+document.querySelectorAll(".time-slot.available").forEach(slot => {
+
+    slot.addEventListener("click", () => {
+
+        document.querySelectorAll(".time-slot")
+            .forEach(s => s.classList.remove("selected"));
+
+        slot.classList.add("selected");
+
+    });
+
+});
+
+
+/* =========================
+   CONFIRM BOOKING
+========================= */
+function confirmBooking() {
+
+    let patientName =
+        document.getElementById("patientName").value;
+
+    let patientPhone =
+        document.getElementById("patientPhone").value;
+
+    let visitReason =
+        document.getElementById("visitReason").value;
+
+    if (
+        patientName === "" ||
+        patientPhone === "" ||
+        visitReason === ""
+    ) {
+
+        alert("Please fill in all fields.");
+        return;
+
+    }
+
+    let appointment = {
+
+        doctor: selectedDoctor,
+        patientName: patientName,
+        patientPhone: patientPhone,
+        visitReason: visitReason
+
+    };
+
+    localStorage.setItem(
+        "appointment",
+        JSON.stringify(appointment)
+    );
+
+    alert(
+        "Appointment booked successfully with " + selectedDoctor
+    );
+
+    document.getElementById("bookingModal")
+        .classList.remove("show");
+
+    document.getElementById("patientName").value = "";
+    document.getElementById("patientPhone").value = "";
+    document.getElementById("visitReason").value = "";
+
+}
+
+
+/* =========================a
+   HAMBURGER MENU
+========================= */
+document.getElementById("hamburger").addEventListener("click", function () {
+
+    document.getElementById("mobileMenu")
+        .classList.toggle("open");
+
+});
+
+</script>
+</body>
+</html>

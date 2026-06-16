@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – Salone HealthConnect</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospitals.html">Find Hospital</a></li>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+      </ul>
+
+      <a href="login.html" class="btn-nav active">
+        Login / Sign Up
+      </a>
+
+      <button class="hamburger" id="hamburger">
+        &#9776;
+      </button>
+
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="hospitals.html">Find Hospital</a>
+      <a href="appointments.html">Book Appointment</a>
+      <a href="donate.html">Donate</a>
+      <a href="about_us.html">About Us</a>
+      <a href="login.html" class="active">Login / Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- LOGIN PAGE -->
+  <div class="login-page">
+
+    <div class="login-box">
+
+      <div class="login-logo">
+        <span class="brand-cross" style="width:40px;height:40px;font-size:24px;">+</span>
+        <span class="brand-name" style="font-size:18px;">
+          Salone <strong>HealthConnect</strong>
+        </span>
+      </div>
+
+      <!-- Tabs -->
+      <div class="login-tabs">
+        <button class="login-tab active" id="tabLogin" onclick="showLogin()">
+          Login
+        </button>
+
+        <button class="login-tab" id="tabRegister" onclick="showRegister()">
+          Create Account
+        </button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="loginForm">
+
+        <h2>Welcome back</h2>
+
+        <p class="login-sub">
+          Sign in to access your health records and appointments
+        </p>
+
+        <div class="login-form">
+
+          <div>
+            <label>Phone Number or Email</label>
+            <input
+            type="text"
+            id="loginEmail"
+            placeholder="e.g. +232 76 000 000 or name@email.com"
+            required>
+
+           <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required>
+
+           <button type="button"
+             class="btn-primary"
+             onclick="loginUser()">
+             Sign In
+            </button>
+            
+          </div>
+
+          
+
+        </div>
+
+        <p class="login-divider">
+          Don't have an account?
+          <a href="#" onclick="showRegister(); return false;">
+            Create one
+          </a>
+        </p>
+
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="registerForm" style="display:none;">
+
+        <h2>Create account</h2>
+
+        <p class="login-sub">
+          Join Salone HealthConnect to manage your health
+        </p>
+
+        <div class="login-form">
+
+          <div>
+            <label>Full Name</label>
+
+            <input
+            type="text"
+            id="fullName"
+            placeholder="e.g. Aminata Bangura"
+            required>
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+
+           <input
+           type="tel"
+           id="phone"
+           placeholder="+232 ..."
+           required>
+          </div>
+
+          <div>
+            <label>Email Address (optional)</label>
+
+            <input
+            type="email"
+            id="email"
+            placeholder="name@email.com">
+          </div>
+
+          <div>
+            <label>District</label>
+
+            <select class="district-select" required>
+
+              <option value="">
+                Select your district
+              </option>
+
+              <option>Western Area Urban</option>
+              <option>Western Area Rural</option>
+              <option>Bo</option>
+              <option>Kenema</option>
+              <option>Makeni</option>
+              <option>Kono</option>
+              <option>Port Loko</option>
+              <option>Tonkolili</option>
+
+            </select>
+
+          </div>
+
+          <div>
+            <label>Password</label>
+
+            <input
+            type="password"
+            id="registerPassword"
+            placeholder="Create a strong password"
+            required>
+          </div>
+
+          <div>
+            <label>Confirm Password</label>
+
+            <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Repeat your password"
+            required>
+          </div>
+
+          <button
+            type="button"
+            class="btn-primary"
+            onclick="registerUser()">
+            Create Account
+          </button>
+
+        </div>
+
+        <p class="login-divider">
+          Already have an account?
+
+          <a href="#" onclick="showLogin(); return false;">
+            Sign in
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+function showLogin() {
+
+    document.getElementById("loginForm").style.display = "block";
+    document.getElementById("registerForm").style.display = "none";
+
+    document.getElementById("tabLogin").classList.add("active");
+    document.getElementById("tabRegister").classList.remove("active");
+
+}
+
+function showRegister() {
+
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("registerForm").style.display = "block";
+
+    document.getElementById("tabLogin").classList.remove("active");
+    document.getElementById("tabRegister").classList.add("active");
+
+}
+
+
+// CREATE ACCOUNT
+function registerUser() {
+
+    let fullName = document.getElementById("fullName").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("registerPassword").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (
+        fullName === "" ||
+        phone === "" ||
+        password === ""
+    ) {
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    let user = {
+        fullName: fullName,
+        phone: phone,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Account created successfully!");
+
+    showLogin();
+}
+
+
+// LOGIN
+function loginUser() {
+
+    let loginEmail = document.getElementById("loginEmail").value;
+    let loginPassword = document.getElementById("loginPassword").value;
+
+    let storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser == null) {
+        alert("No account found. Please create an account.");
+        return;
+    }
+
+    if (
+        (loginEmail === storedUser.email ||
+        loginEmail === storedUser.phone)
+        &&
+        loginPassword === storedUser.password
+    ) {
+
+        alert("Login successful!");
+
+        window.location.href = "index.html";
+
+    } else {
+
+        alert("Invalid email/phone or password.");
+
+    }
+
+}
+
+
+document.getElementById("hamburger").addEventListener("click", function () {
+
+    document.getElementById("mobileMenu").classList.toggle("open");
+
+});
+
+</script>
+
+</body>
+</html>

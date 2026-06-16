@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal - Salone HealthConnect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="hospitals.html">Find Hospital</a></li>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="patient-portal.html">patient</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+      </ul>
+
+      <a href="login.html" class="btn-nav">Login / Sign Up</a>
+
+      <button class="hamburger" id="hamburger">
+        &#9776;
+      </button>
+    </div>
+<!-- Header -->
+<div class="page-header">
+    <div class="container">
+        <h1>Patient Portal</h1>
+        <p>Manage your healthcare information</p>
+    </div>
+</div>
+
+
+<section class="portal-section">
+<div class="container">
+
+<div class="portal-grid">
+
+<!-- Patient Information -->
+<div class="portal-card">
+    <h2>👤 Patient Information</h2>
+
+    <p><strong>Name:</strong> <span id="patientName"></span></p>
+
+    <p><strong>Phone:</strong> <span id="patientPhone"></span></p>
+
+    <p><strong>Status:</strong> Active Patient</p>
+</div>
+
+
+<!-- Appointment -->
+<div class="portal-card">
+    <h2>📅 Appointment Details</h2>
+
+    <p><strong>Doctor:</strong> <span id="doctor"></span></p>
+
+    <p><strong>Reason:</strong> <span id="reason"></span></p>
+</div>
+
+
+<!-- Health Records -->
+<div class="portal-card">
+    <h2>🩺 Health Records</h2>
+
+    <p>Blood Pressure: Normal</p>
+
+    <p>Weight: 70 kg</p>
+
+    <p>Allergies: None</p>
+</div>
+
+
+<!-- Notifications -->
+<div class="portal-card">
+    <h2>🔔 Notifications</h2>
+
+    <p>Next appointment reminder available.</p>
+</div>
+
+</div>
+<script>
+
+let appointment =
+JSON.parse(localStorage.getItem("appointment"));
+
+if(appointment){
+
+document.getElementById("patientName").innerText =
+appointment.patientName;
+
+document.getElementById("patientPhone").innerText =
+appointment.patientPhone;
+
+document.getElementById("doctor").innerText =
+appointment.doctor;
+
+document.getElementById("reason").innerText =
+appointment.visitReason;
+
+}
+
+</script>
+
+</body>
+</html>

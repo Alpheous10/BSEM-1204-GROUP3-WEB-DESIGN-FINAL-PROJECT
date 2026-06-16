@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find a Hospital – Salone HealthConnect</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-cross">+</span>
+        <span class="brand-name">Salone <strong>HealthConnect</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hospitals.html" class="active">Find Hospital</a></li>
+        <li><a href="appointments.html">Book Appointment</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+      <a href="login.html" class="btn-nav">Login / Sign Up</a>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="hospitals.html">Find Hospital</a>
+      <a href="appointments.html">Book Appointment</a>
+      <a href="donate.html">Donate</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Find a Hospital</h1>
+      <p>Search for hospitals near you across Sierra Leone</p>
+    </div>
+  </div>
+
+  <section class="hospital-search-section">
+    <div class="container">
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by hospital name, district or town..." />
+        <select id="districtFilter">
+          <option value="">All Districts</option>
+          <option>Western Area Urban</option>
+          <option>Western Area Rural</option>
+          <option>Bo</option>
+          <option>Kenema</option>
+          <option>Makeni</option>
+          <option>Kono</option>
+          <option>Port Loko</option>
+          <option>Tonkolili</option>
+        </select>
+        <select id="typeFilter">
+          <option value="">All Types</option>
+          <option>Government</option>
+          <option>Private</option>
+          <option>NGO</option>
+        </select>
+        <button class="btn-primary" id="searchBtn">Search</button>
+      </div>
+
+      <!-- Map + List Layout -->
+    
+<div class="map-list-layout">
+
+  <!-- LEFT: Hospital List -->
+  <div class="hospital-list-panel">
+
+    <p class="results-count">
+      Showing <strong>8 hospitals</strong> in Sierra Leone
+    </p>
+
+    <!-- (Your hospital items stay EXACT SAME — no need to rewrite all) -->
+    <!-- KEEP ALL YOUR hosp-item DIVS HERE -->
+
+  </div>
+
+  <!-- RIGHT: MAP PANEL (NEW IMPORTANT UPGRADE) -->
+  <div class="map-panel">
+
+    <div class="map-label">
+      🗺 Live Hospital Locations (Demo View)
+    </div>
+
+    <iframe
+      class="google-map-frame"
+      src="https://www.google.com/maps?q=Freetown%20Sierra%20Leone%20hospitals&output=embed">
+    </iframe>
+
+    <div class="map-note">
+      Click a hospital on the left to view location details
+    </div>
+
+  </div>
+
+</div>
+
+        <!-- Hospital List -->
+        <div class="hospital-list-panel">
+          <p class="results-count">Showing <strong>8 hospitals</strong></p>
+
+          <div class="hosp-item active-item" onclick="selectHospital(this, 'Connaught Hospital')">
+            <div class="hosp-item-top">
+              <h4>Connaught Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Government · General Hospital</p>
+            <p class="hosp-addr">📍 Lightfoot Boston St, Freetown</p>
+            <p class="hosp-phone">📞 +232 22 227 302</p>
+            <div class="hosp-tags">
+              <span class="tag">Emergency</span>
+              <span class="tag">Surgery</span>
+              <span class="tag">Maternity</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Choithram Memorial Hospital')">
+            <div class="hosp-item-top">
+              <h4>Choithram Memorial Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Private · General Hospital</p>
+            <p class="hosp-addr">📍 Wilberforce, Freetown</p>
+            <p class="hosp-phone">📞 +232 22 240 950</p>
+            <div class="hosp-tags">
+              <span class="tag">Cardiology</span>
+              <span class="tag">Pediatrics</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Ola During Children Hospital')">
+            <div class="hosp-item-top">
+              <h4>Ola During Children's Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Government · Children's Hospital</p>
+            <p class="hosp-addr">📍 Fourah Bay Rd, Freetown</p>
+            <p class="hosp-phone">📞 +232 22 241 541</p>
+            <div class="hosp-tags">
+              <span class="tag">Pediatrics</span>
+              <span class="tag">Emergency</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Lumley Government Hospital')">
+            <div class="hosp-item-top">
+              <h4>Lumley Government Hospital</h4>
+              <span class="status-badge closed">Closed</span>
+            </div>
+            <p class="hosp-type">Government · General Hospital</p>
+            <p class="hosp-addr">📍 Lumley, Freetown</p>
+            <p class="hosp-phone">📞 +232 22 236 777</p>
+            <div class="hosp-tags">
+              <span class="tag">General</span>
+              <span class="tag">Maternity</span>
+            </div>
+            <button class="btn-small map-btn">Unavailable</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Bo Government Hospital')">
+            <div class="hosp-item-top">
+              <h4>Bo Government Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Government · Regional Hospital</p>
+            <p class="hosp-addr">📍 Bo, Southern Province</p>
+            <p class="hosp-phone">📞 +232 32 202 000</p>
+            <div class="hosp-tags">
+              <span class="tag">General</span>
+              <span class="tag">Maternity</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Kenema Government Hospital')">
+            <div class="hosp-item-top">
+              <h4>Kenema Government Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Government · Regional Hospital</p>
+            <p class="hosp-addr">📍 Kenema, Eastern Province</p>
+            <p class="hosp-phone">📞 +232 32 402 001</p>
+            <div class="hosp-tags">
+              <span class="tag">General</span>
+              <span class="tag">Lab</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Makeni Government Hospital')">
+            <div class="hosp-item-top">
+              <h4>Makeni Government Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Government · Regional Hospital</p>
+            <p class="hosp-addr">📍 Makeni, Northern Province</p>
+            <p class="hosp-phone">📞 +232 76 600 001</p>
+            <div class="hosp-tags">
+              <span class="tag">General</span>
+              <span class="tag">Surgery</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+          <div class="hosp-item" onclick="selectHospital(this, 'Mercy Hospital')">
+            <div class="hosp-item-top">
+              <h4>Mercy Hospital</h4>
+              <span class="status-badge open">Open</span>
+            </div>
+            <p class="hosp-type">Private · Specialist Hospital</p>
+            <p class="hosp-addr">📍 Hill Station, Freetown</p>
+            <p class="hosp-phone">📞 +232 77 888 999</p>
+            <div class="hosp-tags">
+              <span class="tag">Diagnostics</span>
+              <span class="tag">Gynecology</span>
+            </div>
+            <button class="btn-small map-btn">Available</button>
+          </div>
+
+        </div>
+
+    
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="brand-name-footer"><span class="brand-cross">+</span> Salone HealthConnect</p>
+        <p class="footer-desc">Bridging the healthcare information gap in Sierra Leone.</p>
+      </div>
+      <div class="footer-links">
+        <a href="hospitals.html">Find Hospital</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Salone HealthConnect. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function selectHospital(el, name) {
+      document.querySelectorAll('.hosp-item').forEach(i => i.classList.remove('active-item'));
+      el.classList.add('active-item');
+      // When API key is added, update map src here dynamically
+    }
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
